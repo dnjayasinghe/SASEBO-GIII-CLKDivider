@@ -1,0 +1,632 @@
+# -------------------------------------------------------------------------
+# Pin assignment of Kintex-7 on SASEBO-GIII
+# 
+# File name   : pin_sasebo_giii_k7.v
+# Version     : 1.1
+# Created     : APR/02/2012
+# Last update : APR/25/2013
+# Desgined by : Toshihiro Katashita
+# 
+# 
+# Copyright (C) 2012, 2013 AIST
+# 
+# By using this code, you agree to the following terms and conditions.
+# 
+# This code is copyrighted by AIST ("us").
+# 
+# Permission is hereby granted to copy, reproduce, redistribute or
+# otherwise use this code as long as: there is no monetary profit gained
+# specifically from the use or reproduction of this code, it is not sold,
+# rented, traded or otherwise marketed, and this copyright notice is
+# included prominently in any copy made.
+# 
+# We shall not be liable for any damages, including without limitation
+# direct, indirect, incidental, special or consequential damages arising
+# from the use of this code.
+# 
+# When you publish any results arising from the use of this code, we will
+# appreciate it if you can cite our webpage.
+# (http://www.risec.aist.go.jp/project/sasebo/)
+# -------------------------------------------------------------------------
+#================================================　Timing constraint
+NET "lbus_clkn" TNM_NET = "clkin_grp";
+TIMESPEC "TS_clkin" = PERIOD : "clkin_grp" : 41 ns HIGH 50.0%;
+
+#NET "clko" TNM_NET = "clkin_grpo";
+#TIMESPEC "TS_clkino" = PERIOD : "clkin_grpo" : 20  ns HIGH 50.0%;
+#
+#NET "clko1" TNM_NET = "clkin_grpo1";
+#TIMESPEC "TS_clkino1" = PERIOD : "clkin_grpo1" : 20  ns HIGH 50.0%;
+#
+#NET "clko2" TNM_NET = "clkin_grpo2";
+#TIMESPEC "TS_clkino2" = PERIOD : "clkin_grpo2" : 20  ns HIGH 50.0%;
+#
+##NET "clko3" TNM_NET = "clkin_grpo3";
+##TIMESPEC "TS_clkino3" = PERIOD : "clkin_grpo3" : 20  ns HIGH 50.0%;
+#
+#NET "clk1" TNM_NET = "clkin_grp1";
+#TIMESPEC "TS_clkin1" = PERIOD : "clkin_grp1" : 20  ns HIGH 50.0%;
+#
+#NET "clk2" TNM_NET = "clkin_grp2";
+#TIMESPEC "TS_clkin2" = PERIOD : "clkin_grp2" : 20  ns HIGH 50.0%;
+#
+#NET "clk3" TNM_NET = "clkin_grp3";
+#TIMESPEC "TS_clkin3" = PERIOD : "clkin_grp3" : 20  ns HIGH 50.0%;
+#
+##NET "clk4" TNM_NET = "clkin_grp4";
+##TIMESPEC "TS_clkin3" = PERIOD : "clkin_grp4" : 20  ns HIGH 50.0%;
+#
+#NET "lbus_clkn" CLOCK_DEDICATED_ROUTE = TRUE;
+#NET "clko" CLOCK_DEDICATED_ROUTE = TRUE; 
+#NET "clk1" CLOCK_DEDICATED_ROUTE = TRUE; 
+#NET "clk2" CLOCK_DEDICATED_ROUTE = TRUE; 
+#NET "clk3" CLOCK_DEDICATED_ROUTE = TRUE; 
+##NET "clk4" CLOCK_DEDICATED_ROUTE = TRUE; 
+#
+#NET "clko1" CLOCK_DEDICATED_ROUTE = TRUE; 
+#NET "clko2" CLOCK_DEDICATED_ROUTE = TRUE; 
+##NET "clko3" CLOCK_DEDICATED_ROUTE = TRUE; 
+#
+##PIN "mmcm_adv_inst.CLKIN1" CLOCK_DEDICATED_ROUTE = BACKBONE; 
+
+#================================================ Pin assignment
+#------------------------------------------------ Clock, reset, LED, and SW.
+#################
+# CLOCK / RESET #
+#################
+NET "osc_en_b" LOC="J8" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+
+#######
+# LED #
+#######
+#NET "led<9>" LOC="G20" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "led<8>" LOC="L19" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "led<7>" LOC="K18" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "led<6>" LOC="H19" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "led<5>" LOC="K15" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "led<4>" LOC="P16" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "led<3>" LOC="T19" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "led<2>" LOC="T18" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "led<1>" LOC="H12" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "led<0>" LOC="H11" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+
+########
+# GPIO #
+########
+#NET "gpio_startn" LOC="D19" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "gpio_endn"   LOC="N17" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "gpio_exec"   LOC="N16" |IOSTANDARD=LVCMOS25 |SLEW=QUIETIO |DRIVE=2 |TIG;
+#NET "clk1"   LOC="p24" |IOSTANDARD=LVCMOS25;
+
+#------------------------------------------------ Local bus
+#############################################
+# Spartan-6 HPIC (LVCMOS15, SSTL15 or HTSL) #
+#############################################
+NET "lbus_clkn"   LOC="AB11" |IOSTANDARD=LVCMOS15;
+NET "lbus_rstn"   LOC="AA13" |IOSTANDARD=LVCMOS15;
+#
+#NET "lbus_do<0>"  LOC="V4"   |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<1>"  LOC="V2"   |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<2>"  LOC="W1"   |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<3>"  LOC="AB1"  |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<4>"  LOC="Y3"   |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<5>"  LOC="U7"   |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<6>"  LOC="V3"   |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<7>"  LOC="AF10" |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<8>"  LOC="AC13" |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<9>"  LOC="AE12" |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<10>" LOC="U6"   |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<11>" LOC="AE13" |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<12>" LOC="AA10" |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<13>" LOC="AB12" |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<14>" LOC="AA4"  |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_do<15>" LOC="AE8"  |IOSTANDARD=LVCMOS15 |SLEW=QUIETIO |DRIVE=2;
+#NET "lbus_wrn"    LOC="AD10" |IOSTANDARD=LVCMOS15;
+#NET "lbus_rdn"    LOC="Y13"  |IOSTANDARD=LVCMOS15;
+
+########################################
+# Spartan-6 HRIC (LVCMOS25 or LVDS_25) #
+########################################
+#NET "lbus_di_a<0>"   LOC="T22" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<1>"   LOC="M24" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<2>"   LOC="K25" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<3>"   LOC="R26" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<4>"   LOC="M25" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<5>"   LOC="U17" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<6>"   LOC="N26" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<7>"   LOC="R16" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<8>"   LOC="T20" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<9>"   LOC="R22" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<10>"  LOC="M21" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<11>"  LOC="T24" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<12>"  LOC="P23" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<13>"  LOC="N21" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<14>"  LOC="R21" |IOSTANDARD=LVCMOS25;
+#NET "lbus_di_a<15>"  LOC="N18" |IOSTANDARD=LVCMOS25;
+
+
+NET  "clk"			   LOC="G17"  |IOSTANDARD=LVCMOS25;
+NET  "clk_orig"		LOC="H17"  |IOSTANDARD=LVCMOS25;
+
+
+
+#
+#
+#
+## STAGE INSTANCE 31
+#AREA_GROUP "pblock_tp_[31].CARRY4_insti" RANGE = SLICE_X68Y98:SLICE_X69Y98;
+#INST "tracer0/tp/gen_code_label1[31].CARRY4_insti" AREA_GROUP = "pblock_tp_[31].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[124].LDPE_insti" AREA_GROUP = "pblock_tp_[31].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[125].LDPE_insti" AREA_GROUP = "pblock_tp_[31].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[126].LDPE_insti" AREA_GROUP = "pblock_tp_[31].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[127].LDPE_insti" AREA_GROUP = "pblock_tp_[31].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 30
+#AREA_GROUP "pblock_tp_[30].CARRY4_insti" RANGE = SLICE_X68Y97:SLICE_X69Y97;
+#INST "tracer0/tp/gen_code_label1[30].CARRY4_insti" AREA_GROUP = "pblock_tp_[30].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[120].LDPE_insti" AREA_GROUP = "pblock_tp_[30].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[121].LDPE_insti" AREA_GROUP = "pblock_tp_[30].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[122].LDPE_insti" AREA_GROUP = "pblock_tp_[30].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[123].LDPE_insti" AREA_GROUP = "pblock_tp_[30].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 29
+#AREA_GROUP "pblock_tp_[29].CARRY4_insti" RANGE = SLICE_X68Y96:SLICE_X69Y96;
+#INST "tracer0/tp/gen_code_label1[29].CARRY4_insti" AREA_GROUP = "pblock_tp_[29].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[116].LDPE_insti" AREA_GROUP = "pblock_tp_[29].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[117].LDPE_insti" AREA_GROUP = "pblock_tp_[29].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[118].LDPE_insti" AREA_GROUP = "pblock_tp_[29].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[119].LDPE_insti" AREA_GROUP = "pblock_tp_[29].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 28
+#AREA_GROUP "pblock_tp_[28].CARRY4_insti" RANGE = SLICE_X68Y95:SLICE_X69Y95;
+#INST "tracer0/tp/gen_code_label1[28].CARRY4_insti" AREA_GROUP = "pblock_tp_[28].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[112].LDPE_insti" AREA_GROUP = "pblock_tp_[28].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[113].LDPE_insti" AREA_GROUP = "pblock_tp_[28].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[114].LDPE_insti" AREA_GROUP = "pblock_tp_[28].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[115].LDPE_insti" AREA_GROUP = "pblock_tp_[28].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 27
+#AREA_GROUP "pblock_tp_[27].CARRY4_insti" RANGE = SLICE_X68Y94:SLICE_X69Y94;
+#INST "tracer0/tp/gen_code_label1[27].CARRY4_insti" AREA_GROUP = "pblock_tp_[27].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[108].LDPE_insti" AREA_GROUP = "pblock_tp_[27].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[109].LDPE_insti" AREA_GROUP = "pblock_tp_[27].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[110].LDPE_insti" AREA_GROUP = "pblock_tp_[27].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[111].LDPE_insti" AREA_GROUP = "pblock_tp_[27].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 26
+#AREA_GROUP "pblock_tp_[26].CARRY4_insti" RANGE = SLICE_X68Y93:SLICE_X69Y93;
+#INST "tracer0/tp/gen_code_label1[26].CARRY4_insti" AREA_GROUP = "pblock_tp_[26].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[104].LDPE_insti" AREA_GROUP = "pblock_tp_[26].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[105].LDPE_insti" AREA_GROUP = "pblock_tp_[26].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[106].LDPE_insti" AREA_GROUP = "pblock_tp_[26].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[107].LDPE_insti" AREA_GROUP = "pblock_tp_[26].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 25
+#AREA_GROUP "pblock_tp_[25].CARRY4_insti" RANGE = SLICE_X68Y92:SLICE_X69Y92;
+#INST "tracer0/tp/gen_code_label1[25].CARRY4_insti" AREA_GROUP = "pblock_tp_[25].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[100].LDPE_insti" AREA_GROUP = "pblock_tp_[25].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[101].LDPE_insti" AREA_GROUP = "pblock_tp_[25].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[102].LDPE_insti" AREA_GROUP = "pblock_tp_[25].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[103].LDPE_insti" AREA_GROUP = "pblock_tp_[25].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 24
+#AREA_GROUP "pblock_tp_[24].CARRY4_insti" RANGE = SLICE_X68Y91:SLICE_X69Y91;
+#INST "tracer0/tp/gen_code_label1[24].CARRY4_insti" AREA_GROUP = "pblock_tp_[24].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[96].LDPE_insti" AREA_GROUP = "pblock_tp_[24].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[97].LDPE_insti" AREA_GROUP = "pblock_tp_[24].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[98].LDPE_insti" AREA_GROUP = "pblock_tp_[24].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[99].LDPE_insti" AREA_GROUP = "pblock_tp_[24].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 23
+#AREA_GROUP "pblock_tp_[23].CARRY4_insti" RANGE = SLICE_X68Y90:SLICE_X69Y90;
+#INST "tracer0/tp/gen_code_label1[23].CARRY4_insti" AREA_GROUP = "pblock_tp_[23].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[92].LDPE_insti" AREA_GROUP = "pblock_tp_[23].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[93].LDPE_insti" AREA_GROUP = "pblock_tp_[23].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[94].LDPE_insti" AREA_GROUP = "pblock_tp_[23].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[95].LDPE_insti" AREA_GROUP = "pblock_tp_[23].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 22
+#AREA_GROUP "pblock_tp_[22].CARRY4_insti" RANGE = SLICE_X68Y89:SLICE_X69Y89;
+#INST "tracer0/tp/gen_code_label1[22].CARRY4_insti" AREA_GROUP = "pblock_tp_[22].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[88].LDPE_insti" AREA_GROUP = "pblock_tp_[22].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[89].LDPE_insti" AREA_GROUP = "pblock_tp_[22].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[90].LDPE_insti" AREA_GROUP = "pblock_tp_[22].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[91].LDPE_insti" AREA_GROUP = "pblock_tp_[22].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 21
+#AREA_GROUP "pblock_tp_[21].CARRY4_insti" RANGE = SLICE_X68Y88:SLICE_X69Y88;
+#INST "tracer0/tp/gen_code_label1[21].CARRY4_insti" AREA_GROUP = "pblock_tp_[21].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[84].LDPE_insti" AREA_GROUP = "pblock_tp_[21].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[85].LDPE_insti" AREA_GROUP = "pblock_tp_[21].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[86].LDPE_insti" AREA_GROUP = "pblock_tp_[21].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[87].LDPE_insti" AREA_GROUP = "pblock_tp_[21].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 20
+#AREA_GROUP "pblock_tp_[20].CARRY4_insti" RANGE = SLICE_X68Y87:SLICE_X69Y87;
+#INST "tracer0/tp/gen_code_label1[20].CARRY4_insti" AREA_GROUP = "pblock_tp_[20].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[80].LDPE_insti" AREA_GROUP = "pblock_tp_[20].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[81].LDPE_insti" AREA_GROUP = "pblock_tp_[20].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[82].LDPE_insti" AREA_GROUP = "pblock_tp_[20].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[83].LDPE_insti" AREA_GROUP = "pblock_tp_[20].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 19
+#AREA_GROUP "pblock_tp_[19].CARRY4_insti" RANGE = SLICE_X68Y86:SLICE_X69Y86;
+#INST "tracer0/tp/gen_code_label1[19].CARRY4_insti" AREA_GROUP = "pblock_tp_[19].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[76].LDPE_insti" AREA_GROUP = "pblock_tp_[19].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[77].LDPE_insti" AREA_GROUP = "pblock_tp_[19].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[78].LDPE_insti" AREA_GROUP = "pblock_tp_[19].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[79].LDPE_insti" AREA_GROUP = "pblock_tp_[19].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 18
+#AREA_GROUP "pblock_tp_[18].CARRY4_insti" RANGE = SLICE_X68Y85:SLICE_X69Y85;
+#INST "tracer0/tp/gen_code_label1[18].CARRY4_insti" AREA_GROUP = "pblock_tp_[18].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[72].LDPE_insti" AREA_GROUP = "pblock_tp_[18].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[73].LDPE_insti" AREA_GROUP = "pblock_tp_[18].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[74].LDPE_insti" AREA_GROUP = "pblock_tp_[18].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[75].LDPE_insti" AREA_GROUP = "pblock_tp_[18].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 17
+#AREA_GROUP "pblock_tp_[17].CARRY4_insti" RANGE = SLICE_X68Y84:SLICE_X69Y84;
+#INST "tracer0/tp/gen_code_label1[17].CARRY4_insti" AREA_GROUP = "pblock_tp_[17].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[68].LDPE_insti" AREA_GROUP = "pblock_tp_[17].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[69].LDPE_insti" AREA_GROUP = "pblock_tp_[17].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[70].LDPE_insti" AREA_GROUP = "pblock_tp_[17].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[71].LDPE_insti" AREA_GROUP = "pblock_tp_[17].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 16
+#AREA_GROUP "pblock_tp_[16].CARRY4_insti" RANGE = SLICE_X68Y83:SLICE_X69Y83;
+#INST "tracer0/tp/gen_code_label1[16].CARRY4_insti" AREA_GROUP = "pblock_tp_[16].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[64].LDPE_insti" AREA_GROUP = "pblock_tp_[16].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[65].LDPE_insti" AREA_GROUP = "pblock_tp_[16].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[66].LDPE_insti" AREA_GROUP = "pblock_tp_[16].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[67].LDPE_insti" AREA_GROUP = "pblock_tp_[16].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 15
+#AREA_GROUP "pblock_tp_[15].CARRY4_insti" RANGE = SLICE_X68Y82:SLICE_X69Y82;
+#INST "tracer0/tp/gen_code_label1[15].CARRY4_insti" AREA_GROUP = "pblock_tp_[15].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[60].LDPE_insti" AREA_GROUP = "pblock_tp_[15].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[61].LDPE_insti" AREA_GROUP = "pblock_tp_[15].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[62].LDPE_insti" AREA_GROUP = "pblock_tp_[15].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[63].LDPE_insti" AREA_GROUP = "pblock_tp_[15].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 14
+#AREA_GROUP "pblock_tp_[14].CARRY4_insti" RANGE = SLICE_X68Y81:SLICE_X69Y81;
+#INST "tracer0/tp/gen_code_label1[14].CARRY4_insti" AREA_GROUP = "pblock_tp_[14].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[56].LDPE_insti" AREA_GROUP = "pblock_tp_[14].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[57].LDPE_insti" AREA_GROUP = "pblock_tp_[14].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[58].LDPE_insti" AREA_GROUP = "pblock_tp_[14].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[59].LDPE_insti" AREA_GROUP = "pblock_tp_[14].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 13
+#AREA_GROUP "pblock_tp_[13].CARRY4_insti" RANGE = SLICE_X68Y80:SLICE_X69Y80;
+#INST "tracer0/tp/gen_code_label1[13].CARRY4_insti" AREA_GROUP = "pblock_tp_[13].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[52].LDPE_insti" AREA_GROUP = "pblock_tp_[13].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[53].LDPE_insti" AREA_GROUP = "pblock_tp_[13].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[54].LDPE_insti" AREA_GROUP = "pblock_tp_[13].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[55].LDPE_insti" AREA_GROUP = "pblock_tp_[13].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 12
+#AREA_GROUP "pblock_tp_[12].CARRY4_insti" RANGE = SLICE_X68Y79:SLICE_X69Y79;
+#INST "tracer0/tp/gen_code_label1[12].CARRY4_insti" AREA_GROUP = "pblock_tp_[12].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[48].LDPE_insti" AREA_GROUP = "pblock_tp_[12].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[49].LDPE_insti" AREA_GROUP = "pblock_tp_[12].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[50].LDPE_insti" AREA_GROUP = "pblock_tp_[12].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[51].LDPE_insti" AREA_GROUP = "pblock_tp_[12].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 11
+#AREA_GROUP "pblock_tp_[11].CARRY4_insti" RANGE = SLICE_X68Y78:SLICE_X69Y78;
+#INST "tracer0/tp/gen_code_label1[11].CARRY4_insti" AREA_GROUP = "pblock_tp_[11].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[44].LDPE_insti" AREA_GROUP = "pblock_tp_[11].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[45].LDPE_insti" AREA_GROUP = "pblock_tp_[11].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[46].LDPE_insti" AREA_GROUP = "pblock_tp_[11].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[47].LDPE_insti" AREA_GROUP = "pblock_tp_[11].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 10
+#AREA_GROUP "pblock_tp_[10].CARRY4_insti" RANGE = SLICE_X68Y77:SLICE_X69Y77;
+#INST "tracer0/tp/gen_code_label1[10].CARRY4_insti" AREA_GROUP = "pblock_tp_[10].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[40].LDPE_insti" AREA_GROUP = "pblock_tp_[10].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[41].LDPE_insti" AREA_GROUP = "pblock_tp_[10].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[42].LDPE_insti" AREA_GROUP = "pblock_tp_[10].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[43].LDPE_insti" AREA_GROUP = "pblock_tp_[10].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 9
+#AREA_GROUP "pblock_tp_[9].CARRY4_insti" RANGE = SLICE_X68Y76:SLICE_X69Y76;
+#INST "tracer0/tp/gen_code_label1[9].CARRY4_insti" AREA_GROUP = "pblock_tp_[9].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[36].LDPE_insti" AREA_GROUP = "pblock_tp_[9].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[37].LDPE_insti" AREA_GROUP = "pblock_tp_[9].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[38].LDPE_insti" AREA_GROUP = "pblock_tp_[9].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[39].LDPE_insti" AREA_GROUP = "pblock_tp_[9].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 8
+#AREA_GROUP "pblock_tp_[8].CARRY4_insti" RANGE = SLICE_X68Y75:SLICE_X69Y75;
+#INST "tracer0/tp/gen_code_label1[8].CARRY4_insti" AREA_GROUP = "pblock_tp_[8].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[32].LDPE_insti" AREA_GROUP = "pblock_tp_[8].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[33].LDPE_insti" AREA_GROUP = "pblock_tp_[8].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[34].LDPE_insti" AREA_GROUP = "pblock_tp_[8].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[35].LDPE_insti" AREA_GROUP = "pblock_tp_[8].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 7
+#AREA_GROUP "pblock_tp_[7].CARRY4_insti" RANGE = SLICE_X68Y74:SLICE_X69Y74;
+#INST "tracer0/tp/gen_code_label1[7].CARRY4_insti" AREA_GROUP = "pblock_tp_[7].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[28].LDPE_insti" AREA_GROUP = "pblock_tp_[7].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[29].LDPE_insti" AREA_GROUP = "pblock_tp_[7].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[30].LDPE_insti" AREA_GROUP = "pblock_tp_[7].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[31].LDPE_insti" AREA_GROUP = "pblock_tp_[7].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 6
+#AREA_GROUP "pblock_tp_[6].CARRY4_insti" RANGE = SLICE_X68Y73:SLICE_X69Y73;
+#INST "tracer0/tp/gen_code_label1[6].CARRY4_insti" AREA_GROUP = "pblock_tp_[6].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[24].LDPE_insti" AREA_GROUP = "pblock_tp_[6].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[25].LDPE_insti" AREA_GROUP = "pblock_tp_[6].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[26].LDPE_insti" AREA_GROUP = "pblock_tp_[6].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[27].LDPE_insti" AREA_GROUP = "pblock_tp_[6].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 5
+#AREA_GROUP "pblock_tp_[5].CARRY4_insti" RANGE = SLICE_X68Y72:SLICE_X69Y72;
+#INST "tracer0/tp/gen_code_label1[5].CARRY4_insti" AREA_GROUP = "pblock_tp_[5].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[20].LDPE_insti" AREA_GROUP = "pblock_tp_[5].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[21].LDPE_insti" AREA_GROUP = "pblock_tp_[5].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[22].LDPE_insti" AREA_GROUP = "pblock_tp_[5].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[23].LDPE_insti" AREA_GROUP = "pblock_tp_[5].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 4
+#AREA_GROUP "pblock_tp_[4].CARRY4_insti" RANGE = SLICE_X68Y71:SLICE_X69Y71;
+#INST "tracer0/tp/gen_code_label1[4].CARRY4_insti" AREA_GROUP = "pblock_tp_[4].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[16].LDPE_insti" AREA_GROUP = "pblock_tp_[4].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[17].LDPE_insti" AREA_GROUP = "pblock_tp_[4].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[18].LDPE_insti" AREA_GROUP = "pblock_tp_[4].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[19].LDPE_insti" AREA_GROUP = "pblock_tp_[4].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 3
+#AREA_GROUP "pblock_tp_[3].CARRY4_insti" RANGE = SLICE_X68Y70:SLICE_X69Y70;
+#INST "tracer0/tp/gen_code_label1[3].CARRY4_insti" AREA_GROUP = "pblock_tp_[3].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[12].LDPE_insti" AREA_GROUP = "pblock_tp_[3].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[13].LDPE_insti" AREA_GROUP = "pblock_tp_[3].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[14].LDPE_insti" AREA_GROUP = "pblock_tp_[3].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[15].LDPE_insti" AREA_GROUP = "pblock_tp_[3].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 2
+#AREA_GROUP "pblock_tp_[2].CARRY4_insti" RANGE = SLICE_X68Y69:SLICE_X69Y69;
+#INST "tracer0/tp/gen_code_label1[2].CARRY4_insti" AREA_GROUP = "pblock_tp_[2].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[8].LDPE_insti" AREA_GROUP = "pblock_tp_[2].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[9].LDPE_insti" AREA_GROUP = "pblock_tp_[2].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[10].LDPE_insti" AREA_GROUP = "pblock_tp_[2].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[11].LDPE_insti" AREA_GROUP = "pblock_tp_[2].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 1
+#AREA_GROUP "pblock_tp_[1].CARRY4_insti" RANGE = SLICE_X68Y68:SLICE_X69Y68;
+#INST "tracer0/tp/gen_code_label1[1].CARRY4_insti" AREA_GROUP = "pblock_tp_[1].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[4].LDPE_insti" AREA_GROUP = "pblock_tp_[1].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[5].LDPE_insti" AREA_GROUP = "pblock_tp_[1].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[6].LDPE_insti" AREA_GROUP = "pblock_tp_[1].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[7].LDPE_insti" AREA_GROUP = "pblock_tp_[1].CARRY4_insti";
+#
+#
+#
+## STAGE INSTANCE 0
+#AREA_GROUP "pblock_tp_[0].CARRY4_insti" RANGE = SLICE_X68Y67:SLICE_X69Y67;
+#INST "tracer0/tp/gen_code_label1[0].CARRY4_insti" AREA_GROUP = "pblock_tp_[0].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[0].LDPE_insti" AREA_GROUP = "pblock_tp_[0].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[1].LDPE_insti" AREA_GROUP = "pblock_tp_[0].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[2].LDPE_insti" AREA_GROUP = "pblock_tp_[0].CARRY4_insti";
+#INST "tracer0/tp/gen_code_label2[3].LDPE_insti" AREA_GROUP = "pblock_tp_[0].CARRY4_insti";
+#
+##
+##
+### INITIAL DELAY INSTANCE 11
+##AREA_GROUP "pblock_idelay[11]" RANGE=SLICE_X68Y66:SLICE_X69Y66;
+##INST "tracer0/tp/gen_code_label3[44].LUT1_insti" AREA_GROUP = "pblock_idelay[11]";
+##INST "tracer0/tp/gen_code_label3[45].LUT1_insti" AREA_GROUP = "pblock_idelay[11]";
+##INST "tracer0/tp/gen_code_label3[46].LUT1_insti" AREA_GROUP = "pblock_idelay[11]";
+##INST "tracer0/tp/gen_code_label3[47].LUT1_insti" AREA_GROUP = "pblock_idelay[11]";
+##INST "tracer0/tp/gen_code_label3[44].LDCE_Delayi" AREA_GROUP = "pblock_idelay[11]";
+##INST "tracer0/tp/gen_code_label3[45].LDCE_Delayi" AREA_GROUP = "pblock_idelay[11]";
+##INST "tracer0/tp/gen_code_label3[46].LDCE_Delayi" AREA_GROUP = "pblock_idelay[11]";
+##INST "tracer0/tp/gen_code_label3[47].LDCE_Delayi" AREA_GROUP = "pblock_idelay[11]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 10
+##AREA_GROUP "pblock_idelay[10]" RANGE=SLICE_X68Y65:SLICE_X69Y65;
+##INST "tracer0/tp/gen_code_label3[40].LUT1_insti" AREA_GROUP = "pblock_idelay[10]";
+##INST "tracer0/tp/gen_code_label3[41].LUT1_insti" AREA_GROUP = "pblock_idelay[10]";
+##INST "tracer0/tp/gen_code_label3[42].LUT1_insti" AREA_GROUP = "pblock_idelay[10]";
+##INST "tracer0/tp/gen_code_label3[43].LUT1_insti" AREA_GROUP = "pblock_idelay[10]";
+##INST "tracer0/tp/gen_code_label3[40].LDCE_Delayi" AREA_GROUP = "pblock_idelay[10]";
+##INST "tracer0/tp/gen_code_label3[41].LDCE_Delayi" AREA_GROUP = "pblock_idelay[10]";
+##INST "tracer0/tp/gen_code_label3[42].LDCE_Delayi" AREA_GROUP = "pblock_idelay[10]";
+##INST "tracer0/tp/gen_code_label3[43].LDCE_Delayi" AREA_GROUP = "pblock_idelay[10]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 9
+##AREA_GROUP "pblock_idelay[9]" RANGE=SLICE_X68Y64:SLICE_X69Y64;
+##INST "tracer0/tp/gen_code_label3[36].LUT1_insti" AREA_GROUP = "pblock_idelay[9]";
+##INST "tracer0/tp/gen_code_label3[37].LUT1_insti" AREA_GROUP = "pblock_idelay[9]";
+##INST "tracer0/tp/gen_code_label3[38].LUT1_insti" AREA_GROUP = "pblock_idelay[9]";
+##INST "tracer0/tp/gen_code_label3[39].LUT1_insti" AREA_GROUP = "pblock_idelay[9]";
+##INST "tracer0/tp/gen_code_label3[36].LDCE_Delayi" AREA_GROUP = "pblock_idelay[9]";
+##INST "tracer0/tp/gen_code_label3[37].LDCE_Delayi" AREA_GROUP = "pblock_idelay[9]";
+##INST "tracer0/tp/gen_code_label3[38].LDCE_Delayi" AREA_GROUP = "pblock_idelay[9]";
+##INST "tracer0/tp/gen_code_label3[39].LDCE_Delayi" AREA_GROUP = "pblock_idelay[9]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 8
+##AREA_GROUP "pblock_idelay[8]" RANGE=SLICE_X68Y63:SLICE_X69Y63;
+##INST "tracer0/tp/gen_code_label3[32].LUT1_insti" AREA_GROUP = "pblock_idelay[8]";
+##INST "tracer0/tp/gen_code_label3[33].LUT1_insti" AREA_GROUP = "pblock_idelay[8]";
+##INST "tracer0/tp/gen_code_label3[34].LUT1_insti" AREA_GROUP = "pblock_idelay[8]";
+##INST "tracer0/tp/gen_code_label3[35].LUT1_insti" AREA_GROUP = "pblock_idelay[8]";
+##INST "tracer0/tp/gen_code_label3[32].LDCE_Delayi" AREA_GROUP = "pblock_idelay[8]";
+##INST "tracer0/tp/gen_code_label3[33].LDCE_Delayi" AREA_GROUP = "pblock_idelay[8]";
+##INST "tracer0/tp/gen_code_label3[34].LDCE_Delayi" AREA_GROUP = "pblock_idelay[8]";
+##INST "tracer0/tp/gen_code_label3[35].LDCE_Delayi" AREA_GROUP = "pblock_idelay[8]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 7
+##AREA_GROUP "pblock_idelay[7]" RANGE=SLICE_X68Y62:SLICE_X69Y62;
+##INST "tracer0/tp/gen_code_label3[28].LUT1_insti" AREA_GROUP = "pblock_idelay[7]";
+##INST "tracer0/tp/gen_code_label3[29].LUT1_insti" AREA_GROUP = "pblock_idelay[7]";
+##INST "tracer0/tp/gen_code_label3[30].LUT1_insti" AREA_GROUP = "pblock_idelay[7]";
+##INST "tracer0/tp/gen_code_label3[31].LUT1_insti" AREA_GROUP = "pblock_idelay[7]";
+##INST "tracer0/tp/gen_code_label3[28].LDCE_Delayi" AREA_GROUP = "pblock_idelay[7]";
+##INST "tracer0/tp/gen_code_label3[29].LDCE_Delayi" AREA_GROUP = "pblock_idelay[7]";
+##INST "tracer0/tp/gen_code_label3[30].LDCE_Delayi" AREA_GROUP = "pblock_idelay[7]";
+##INST "tracer0/tp/gen_code_label3[31].LDCE_Delayi" AREA_GROUP = "pblock_idelay[7]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 6
+##AREA_GROUP "pblock_idelay[6]" RANGE=SLICE_X68Y61:SLICE_X69Y61;
+##INST "tracer0/tp/gen_code_label3[24].LUT1_insti" AREA_GROUP = "pblock_idelay[6]";
+##INST "tracer0/tp/gen_code_label3[25].LUT1_insti" AREA_GROUP = "pblock_idelay[6]";
+##INST "tracer0/tp/gen_code_label3[26].LUT1_insti" AREA_GROUP = "pblock_idelay[6]";
+##INST "tracer0/tp/gen_code_label3[27].LUT1_insti" AREA_GROUP = "pblock_idelay[6]";
+##INST "tracer0/tp/gen_code_label3[24].LDCE_Delayi" AREA_GROUP = "pblock_idelay[6]";
+##INST "tracer0/tp/gen_code_label3[25].LDCE_Delayi" AREA_GROUP = "pblock_idelay[6]";
+##INST "tracer0/tp/gen_code_label3[26].LDCE_Delayi" AREA_GROUP = "pblock_idelay[6]";
+##INST "tracer0/tp/gen_code_label3[27].LDCE_Delayi" AREA_GROUP = "pblock_idelay[6]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 5
+##AREA_GROUP "pblock_idelay[5]" RANGE=SLICE_X68Y60:SLICE_X69Y60;
+##INST "tracer0/tp/gen_code_label3[20].LUT1_insti" AREA_GROUP = "pblock_idelay[5]";
+##INST "tracer0/tp/gen_code_label3[21].LUT1_insti" AREA_GROUP = "pblock_idelay[5]";
+##INST "tracer0/tp/gen_code_label3[22].LUT1_insti" AREA_GROUP = "pblock_idelay[5]";
+##INST "tracer0/tp/gen_code_label3[23].LUT1_insti" AREA_GROUP = "pblock_idelay[5]";
+##INST "tracer0/tp/gen_code_label3[20].LDCE_Delayi" AREA_GROUP = "pblock_idelay[5]";
+##INST "tracer0/tp/gen_code_label3[21].LDCE_Delayi" AREA_GROUP = "pblock_idelay[5]";
+##INST "tracer0/tp/gen_code_label3[22].LDCE_Delayi" AREA_GROUP = "pblock_idelay[5]";
+##INST "tracer0/tp/gen_code_label3[23].LDCE_Delayi" AREA_GROUP = "pblock_idelay[5]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 4
+##AREA_GROUP "pblock_idelay[4]" RANGE=SLICE_X68Y59:SLICE_X69Y59;
+##INST "tracer0/tp/gen_code_label3[16].LUT1_insti" AREA_GROUP = "pblock_idelay[4]";
+##INST "tracer0/tp/gen_code_label3[17].LUT1_insti" AREA_GROUP = "pblock_idelay[4]";
+##INST "tracer0/tp/gen_code_label3[18].LUT1_insti" AREA_GROUP = "pblock_idelay[4]";
+##INST "tracer0/tp/gen_code_label3[19].LUT1_insti" AREA_GROUP = "pblock_idelay[4]";
+##INST "tracer0/tp/gen_code_label3[16].LDCE_Delayi" AREA_GROUP = "pblock_idelay[4]";
+##INST "tracer0/tp/gen_code_label3[17].LDCE_Delayi" AREA_GROUP = "pblock_idelay[4]";
+##INST "tracer0/tp/gen_code_label3[18].LDCE_Delayi" AREA_GROUP = "pblock_idelay[4]";
+##INST "tracer0/tp/gen_code_label3[19].LDCE_Delayi" AREA_GROUP = "pblock_idelay[4]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 3
+##AREA_GROUP "pblock_idelay[3]" RANGE=SLICE_X68Y58:SLICE_X69Y58;
+##INST "tracer0/tp/gen_code_label3[12].LUT1_insti" AREA_GROUP = "pblock_idelay[3]";
+##INST "tracer0/tp/gen_code_label3[13].LUT1_insti" AREA_GROUP = "pblock_idelay[3]";
+##INST "tracer0/tp/gen_code_label3[14].LUT1_insti" AREA_GROUP = "pblock_idelay[3]";
+##INST "tracer0/tp/gen_code_label3[15].LUT1_insti" AREA_GROUP = "pblock_idelay[3]";
+##INST "tracer0/tp/gen_code_label3[12].LDCE_Delayi" AREA_GROUP = "pblock_idelay[3]";
+##INST "tracer0/tp/gen_code_label3[13].LDCE_Delayi" AREA_GROUP = "pblock_idelay[3]";
+##INST "tracer0/tp/gen_code_label3[14].LDCE_Delayi" AREA_GROUP = "pblock_idelay[3]";
+##INST "tracer0/tp/gen_code_label3[15].LDCE_Delayi" AREA_GROUP = "pblock_idelay[3]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 2
+##AREA_GROUP "pblock_idelay[2]" RANGE=SLICE_X68Y57:SLICE_X69Y57;
+##INST "tracer0/tp/gen_code_label3[8].LUT1_insti" AREA_GROUP = "pblock_idelay[2]";
+##INST "tracer0/tp/gen_code_label3[9].LUT1_insti" AREA_GROUP = "pblock_idelay[2]";
+##INST "tracer0/tp/gen_code_label3[10].LUT1_insti" AREA_GROUP = "pblock_idelay[2]";
+##INST "tracer0/tp/gen_code_label3[11].LUT1_insti" AREA_GROUP = "pblock_idelay[2]";
+##INST "tracer0/tp/gen_code_label3[8].LDCE_Delayi" AREA_GROUP = "pblock_idelay[2]";
+##INST "tracer0/tp/gen_code_label3[9].LDCE_Delayi" AREA_GROUP = "pblock_idelay[2]";
+##INST "tracer0/tp/gen_code_label3[10].LDCE_Delayi" AREA_GROUP = "pblock_idelay[2]";
+##INST "tracer0/tp/gen_code_label3[11].LDCE_Delayi" AREA_GROUP = "pblock_idelay[2]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 1
+##AREA_GROUP "pblock_idelay[1]" RANGE=SLICE_X68Y56:SLICE_X69Y56;
+##INST "tracer0/tp/gen_code_label3[4].LUT1_insti" AREA_GROUP = "pblock_idelay[1]";
+##INST "tracer0/tp/gen_code_label3[5].LUT1_insti" AREA_GROUP = "pblock_idelay[1]";
+##INST "tracer0/tp/gen_code_label3[6].LUT1_insti" AREA_GROUP = "pblock_idelay[1]";
+##INST "tracer0/tp/gen_code_label3[7].LUT1_insti" AREA_GROUP = "pblock_idelay[1]";
+##INST "tracer0/tp/gen_code_label3[4].LDCE_Delayi" AREA_GROUP = "pblock_idelay[1]";
+##INST "tracer0/tp/gen_code_label3[5].LDCE_Delayi" AREA_GROUP = "pblock_idelay[1]";
+##INST "tracer0/tp/gen_code_label3[6].LDCE_Delayi" AREA_GROUP = "pblock_idelay[1]";
+##INST "tracer0/tp/gen_code_label3[7].LDCE_Delayi" AREA_GROUP = "pblock_idelay[1]";
+##
+##
+##
+### INITIAL DELAY INSTANCE 0
+##AREA_GROUP "pblock_idelay[0]" RANGE=SLICE_X68Y55:SLICE_X69Y55;
+##INST "tracer0/tp/gen_code_label3[0].LUT1_insti" AREA_GROUP = "pblock_idelay[0]";
+##INST "tracer0/tp/gen_code_label3[1].LUT1_insti" AREA_GROUP = "pblock_idelay[0]";
+##INST "tracer0/tp/gen_code_label3[2].LUT1_insti" AREA_GROUP = "pblock_idelay[0]";
+##INST "tracer0/tp/gen_code_label3[3].LUT1_insti" AREA_GROUP = "pblock_idelay[0]";
+##INST "tracer0/tp/gen_code_label3[0].LDCE_Delayi" AREA_GROUP = "pblock_idelay[0]";
+##INST "tracer0/tp/gen_code_label3[1].LDCE_Delayi" AREA_GROUP = "pblock_idelay[0]";
+##INST "tracer0/tp/gen_code_label3[2].LDCE_Delayi" AREA_GROUP = "pblock_idelay[0]";
+##INST "tracer0/tp/gen_code_label3[3].LDCE_Delayi" AREA_GROUP = "pblock_idelay[0]";
+##
+##
+##
+##

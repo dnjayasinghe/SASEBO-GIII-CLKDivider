@@ -1,0 +1,174 @@
+#:C69    
+#Xilinx FPGA Editor Command Log File
+#Editor Version:
+#:V   NT M2.1 P.20131013
+#Current Working Directory:
+#:D   C:\Users\sca-djay\Documents\GitHub\SASEBOGIII-DEMO\sasebo_giii_aes-demo
+#Date/Time:
+#:T   Mon Jun 19 10:25:14 2023
+#------------------------------
+	#Reading CHIP_SASEBO_GIII_AES.ncd...
+	#Loading device for application Rf_Device from file '7k325t.nph' in environment C:\Xilinx\14.7\ISE_DS\ISE\.
+	#   "CHIP_SASEBO_GIII_AES" is an NCD, version 3.2, device xc7k325t, package fbg676, speed -1
+	#Design creation date: 2023.05.16.03.12.51
+	#Building chip graphics...
+	#Loading speed info...
+	#1
+setattr main edit-mode no-logic-changes
+	#2
+unselect -all
+	#3
+select comp 'AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]'
+	#comp "AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]",  site "SLICE_X53Y101",  type = SLICEL  (RPM grid X143Y202)
+	#4
+unselect -all
+	#5
+select comp 'AES_Composite_enc/aes_core2/SB2/u2/N6'
+	#comp "AES_Composite_enc/aes_core2/SB2/u2/N6",  site "SLICE_X52Y101",  type = SLICEL  (RPM grid X141Y202)
+	#6
+unselect -all
+	#7
+select comp 'AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]'
+	#comp "AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]",  site "SLICE_X53Y101",  type = SLICEL  (RPM grid X143Y202)
+	#8
+unselect -all
+	#9
+select pin 'SLICE_X52Y101.C1'
+	#site.pin = SLICE_X52Y101.C1
+	#10
+unselect -all
+	#11
+select comp 'AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]'
+	#comp "AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]",  site "SLICE_X53Y101",  type = SLICEL  (RPM grid X143Y202)
+	#12
+unselect -all
+	#13
+select comp 'AES_Composite_enc/aes_core2/SB2/u2/N6'
+	#comp "AES_Composite_enc/aes_core2/SB2/u2/N6",  site "SLICE_X52Y101",  type = SLICEL  (RPM grid X141Y202)
+	#14
+unselect -all
+	#15
+select comp 'AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]'
+	#comp "AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]",  site "SLICE_X53Y101",  type = SLICEL  (RPM grid X143Y202)
+	#16
+unselect -all
+	#17
+select comp 'AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]'
+	#comp "AES_Composite_enc/aes_core2/SB2/u2/g1[3]_pi[3]",  site "SLICE_X53Y101",  type = SLICEL  (RPM grid X143Y202)
+	#18
+post block
+	#19
+unselect -all
+	#20
+select site 'SLICE_X55Y102'
+	#site "SLICE_X55Y102",  type = SLICEL  (RPM grid X151Y204)
+	#21
+unselect -all
+	#22
+select site 'SLICE_X54Y102'
+	#site "SLICE_X54Y102",  type = SLICEM  (RPM grid X149Y204)
+	#23
+unselect -all
+	#24
+select site 'SLICE_X55Y102'
+	#site "SLICE_X55Y102",  type = SLICEL  (RPM grid X151Y204)
+	#25
+unselect -all
+	#26
+select site 'SLICE_X54Y102'
+	#site "SLICE_X54Y102",  type = SLICEM  (RPM grid X149Y204)
+	#27
+unselect -all
+	#28
+select site 'SLICE_X55Y102'
+	#site "SLICE_X55Y102",  type = SLICEL  (RPM grid X151Y204)
+	#29
+unselect site 'SLICE_X55Y102'
+	#30
+select -k net 'tracer0/td0/GND_28_o_GND_28_o_add_158_OUT[2]'
+	#31
+unselect net 'tracer0/td0/GND_28_o_GND_28_o_add_158_OUT[2]'
+	#32
+select -k net 'tracer0/td0/n0696[5]'
+	#33
+unselect net 'tracer0/td0/n0696[5]'
+	#34
+select -k net 'tracer0/tdc_data_reg[0]'
+	#35
+unselect -all
+	#36
+select comp 'tracer0/td0/tdc_input_buf_reg[0]'
+	#comp "tracer0/td0/tdc_input_buf_reg[0]",  site "SLICE_X101Y40",  type = SLICEL  (RPM grid X247Y80)
+	#37
+unselect -all
+	#38
+select comp 'tracer0/td0/tdc_input_buf_reg[0]'
+	#comp "tracer0/td0/tdc_input_buf_reg[0]",  site "SLICE_X101Y40",  type = SLICEL  (RPM grid X247Y80)
+	#39
+post block
+	#40
+unselect -all
+	#41
+select comp 'tracer0/td0/N10'
+	#comp "tracer0/td0/N10",  site "SLICE_X101Y41",  type = SLICEL  (RPM grid X247Y82)
+	#42
+post block
+	#43
+unselect comp 'tracer0/td0/N10'
+	#44
+select -k net 'tracer0/tp/co1[123]'
+	#45
+unselect -all
+	#46
+select comp 'tracer0/tdc_data_wire[99]'
+	#comp "tracer0/tdc_data_wire[99]",  site "SLICE_X69Y91",  type = SLICEL  (RPM grid X179Y182)
+	#47
+post block
+	#48
+setattr main disable_draw on
+	#49
+setattr layer switch_boxes view on
+	#50
+setattr main disable_draw off
+	#Hint: change the visibility of more than one layer at a time by clicking on the apply button, clicking two or more layer buttons, and then clicking on the apply button again.
+	#51
+setattr main disable_draw on
+	#52
+setattr layer pips view on
+	#53
+setattr main disable_draw off
+	#54
+setattr main disable_draw on
+	#55
+setattr layer routes view on
+	#56
+setattr main disable_draw off
+	#57
+setattr main disable_draw on
+	#58
+setattr layer ratsnests view on
+	#59
+setattr main disable_draw off
+	#60
+setattr main disable_draw on
+	#61
+setattr layer hard_macros view off
+	#62
+setattr main disable_draw off
+	#63
+setattr main disable_draw on
+	#64
+setattr layer clock_regions view on
+	#65
+setattr main disable_draw off
+	#66
+unselect comp 'tracer0/tdc_data_wire[99]'
+	#67
+select -k net 'tracer0/tp/co1[123]'
+	#68
+unselect -all
+	#69
+select comp 'tracer0/tdc_data_wire[127]'
+	#comp "tracer0/tdc_data_wire[127]",  site "SLICE_X69Y98",  type = SLICEL  (RPM grid X179Y196)
+	#70
+post block

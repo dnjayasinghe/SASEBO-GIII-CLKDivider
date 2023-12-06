@@ -1,0 +1,49 @@
+Release 14.7 - reportgen P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Wed Dec 06 12:26:04 2023
+
+File: CHIP_SASEBO_GIII_AES.dly
+
+ The 20 worst nets by delay are:
++-----------------+-----------+
+| Max Delay       | Netname   |
++-----------------+-----------+
+   2.508            clk_orig_OBUF
+   2.389            mk_clkrst_CLKFBOUT
+   2.389            mk_clkrst_clk0
+   1.984            mk_clkrst_CLKFBIN
+   1.263            clk_OBUF
+   1.230            mk_clkrst_refclk
+---------------------------------
+
+-------------------------------------------------------------------------------
+                               Net Delays
+-------------------------------------------------------------------------------
+
+clk_OBUF
+   clk_OBUF.AQ
+         1.263  clk.O
+         0.358  clk_OBUF.A4
+
+clk_orig_OBUF
+   mk_clkrst_u12.O
+         2.508  clk_orig.O
+         1.514  clk_OBUF.CLK
+
+mk_clkrst_CLKFBIN
+   mk_clkrst_u15.O
+         1.984  mk_clkrst_MMCME2_BASE_inst.CLKFBIN
+
+mk_clkrst_CLKFBOUT
+   mk_clkrst_MMCME2_BASE_inst.CLKFBOUT
+         2.389  mk_clkrst_u15.I0
+
+mk_clkrst_clk0
+   mk_clkrst_MMCME2_BASE_inst.CLKOUT0
+         2.389  mk_clkrst_u12.I0
+
+mk_clkrst_refclk
+   lbus_clkn.I
+         1.230  mk_clkrst_MMCME2_BASE_inst.CLKIN1
+
