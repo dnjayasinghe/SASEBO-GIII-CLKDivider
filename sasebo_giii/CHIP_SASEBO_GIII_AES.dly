@@ -1,7 +1,7 @@
 Release 14.7 - reportgen P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Wed Dec 06 12:26:04 2023
+Thu Dec 07 11:24:57 2023
 
 File: CHIP_SASEBO_GIII_AES.dly
 
@@ -13,23 +13,35 @@ File: CHIP_SASEBO_GIII_AES.dly
    2.389            mk_clkrst_CLKFBOUT
    2.389            mk_clkrst_clk0
    1.984            mk_clkrst_CLKFBIN
-   1.263            clk_OBUF
+   1.255            clk_OBUF
    1.230            mk_clkrst_refclk
+   0.488            clk0
+   0.453            clk1
 ---------------------------------
 
 -------------------------------------------------------------------------------
                                Net Delays
 -------------------------------------------------------------------------------
 
+clk0
+   clk0.AQ
+         0.488  clk1.CLK
+         0.358  clk0.A4
+
+clk1
+   clk1.DMUX
+         0.381  clk_OBUF.CLK
+         0.453  clk1.D5
+
 clk_OBUF
    clk_OBUF.AQ
-         1.263  clk.O
+         1.255  clk.O
          0.358  clk_OBUF.A4
 
 clk_orig_OBUF
    mk_clkrst_u12.O
          2.508  clk_orig.O
-         1.514  clk_OBUF.CLK
+         1.513  clk0.CLK
 
 mk_clkrst_CLKFBIN
    mk_clkrst_u15.O

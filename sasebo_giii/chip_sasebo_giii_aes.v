@@ -62,7 +62,7 @@ module CHIP_SASEBO_GIII_AES
 
    //------------------------------------------------
    // Internal clock
-   wire         clk, rst;
+   wire         clk, rst, clk0, clk1;
    wire         clk_sample;
 	
 	assign 		osc_en_b =1;
@@ -71,7 +71,9 @@ module CHIP_SASEBO_GIII_AES
  MK_CLKRST mk_clkrst (.clkin(lbus_clkn), .rstnin(lbus_rstn),
                         .clk(clk_sample), .clk_sample(), .rst(rst), .clk_delay(), .delay());
 								
- clk_div cd1( .clk_in(clk_sample), .clk_out(clk) );
+ clk_div cd1( .clk_in(clk_sample), 	.clk_out(clk0) );
+ clk_div cd2( .clk_in(clk0), 			.clk_out(clk1) );
+ clk_div cd3( .clk_in(clk1), 			.clk_out(clk)  );
 								
 endmodule // CHIP_SASEBO_GIII_AES
 
