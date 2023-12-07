@@ -40,7 +40,7 @@ module CHIP_SASEBO_GIII_AES
 	
 	clk, clk_orig,
    
-	
+	led,
    // Clock OSC
    osc_en_b);
    
@@ -52,6 +52,7 @@ module CHIP_SASEBO_GIII_AES
    input         lbus_clkn, lbus_rstn;
 	output 			clk;
 	output 			clk_orig;
+	output	[3:0]	led;
 
    // GPIO and LED
 //   output        gpio_startn, gpio_endn, gpio_exec;
@@ -63,18 +64,29 @@ module CHIP_SASEBO_GIII_AES
    //------------------------------------------------
    // Internal clock
    wire         clk, rst, clk0, clk1;
+	wire   [3:0] counter;
    wire         clk_sample;
 	
-	assign 		osc_en_b =1;
+	wire	 [7:0] counter_out;
+	
+	assign 		osc_en_b = 1;
 	assign 		clk_orig = clk_sample;
+	assign		led 		= counter_out;
+	assign		clk		= counter_out[3];
 	
  MK_CLKRST mk_clkrst (.clkin(lbus_clkn), .rstnin(lbus_rstn),
                         .clk(clk_sample), .clk_sample(), .rst(rst), .clk_delay(), .delay());
-								
- clk_div cd1( .clk_in(clk_sample), 	.clk_out(clk0) );
- clk_div cd2( .clk_in(clk0), 			.clk_out(clk1) );
- clk_div cd3( .clk_in(clk1), 			.clk_out(clk)  );
-								
+ 
+ //assign counter[0] = ~clk_sample;	
+ //clk_div cd1( .clk_in(clk_sample), 	.clk_out(counter[1]) );
+ //clk_div cd2( .clk_in(counter[1]), 	.clk_out(counter[2]) );
+ //clk_div cd3( .clk_in(counter[2]), 	.clk_out(counter[3])  );
+	
+	clk_div_counter  cdc (.clk_in(clk_sample), .clk_sample(clk_sample), .counter_out(counter_out));
+
+
+
+ 								
 endmodule // CHIP_SASEBO_GIII_AES
 
 
