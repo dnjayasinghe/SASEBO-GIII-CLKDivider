@@ -38,7 +38,7 @@ module CHIP_SASEBO_GIII_AES
 
    // GPIO and LED
 	
-	clk, clk_orig,
+	clk_out, clk_orig,
    
 	led,
    // Clock OSC
@@ -50,9 +50,9 @@ module CHIP_SASEBO_GIII_AES
 //   output [15:0] lbus_do;
 //   input         lbus_wrn, lbus_rdn;
    input         lbus_clkn, lbus_rstn;
-	output 			clk;
+	output 			clk_out;
 	output 			clk_orig;
-	output	[3:0]	led;
+	output	[7:0]	led;
 
    // GPIO and LED
 //   output        gpio_startn, gpio_endn, gpio_exec;
@@ -64,25 +64,25 @@ module CHIP_SASEBO_GIII_AES
    //------------------------------------------------
    // Internal clock
    wire         clk, rst, clk0, clk1;
-	wire   [3:0] counter;
+	wire   [7:0] counter;
    wire         clk_sample;
 	
 	wire	 [7:0] counter_out;
 	
 	assign 		osc_en_b = 1;
-	assign 		clk_orig = clk_sample;
+	assign 		clk_orig = clk;
 	assign		led 		= counter_out;
-	assign		clk		= counter_out[3];
+	assign		clk_out	= counter_out[6];
 	
  MK_CLKRST mk_clkrst (.clkin(lbus_clkn), .rstnin(lbus_rstn),
-                        .clk(clk_sample), .clk_sample(), .rst(rst), .clk_delay(), .delay());
+                        .clk(clk), .clk_sample(clk_sample), .rst(rst), .clk_delay(), .delay());
  
  //assign counter[0] = ~clk_sample;	
  //clk_div cd1( .clk_in(clk_sample), 	.clk_out(counter[1]) );
  //clk_div cd2( .clk_in(counter[1]), 	.clk_out(counter[2]) );
  //clk_div cd3( .clk_in(counter[2]), 	.clk_out(counter[3])  );
 	
-	clk_div_counter  cdc (.clk_in(clk_sample), .clk_sample(clk_sample), .counter_out(counter_out));
+	clk_div_counter  cdc (.clk_in(clk), .clk_sample(clk_sample), .counter_out(counter_out));
 
 
 
@@ -148,7 +148,7 @@ module MK_CLKRST (clkin, rstnin, clk, clk_sample, clk_delay, rst, delay);
 		.CLKOUT4_DIVIDE(1),
 		.CLKOUT5_DIVIDE(1),
 		.CLKOUT6_DIVIDE(1),
-		.CLKOUT0_DIVIDE_F(1), // Divide amount for CLKOUT0 (1.000-128.000).
+		.CLKOUT0_DIVIDE_F(80), // Divide amount for CLKOUT0 (1.000-128.000).
 		// CLKOUT0_DUTY_CYCLE - CLKOUT6_DUTY_CYCLE: Duty cycle for each CLKOUT (0.01-0.99).
 		.CLKOUT0_DUTY_CYCLE(0.5),
 		.CLKOUT1_DUTY_CYCLE(0.5),

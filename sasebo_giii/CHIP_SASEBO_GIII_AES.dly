@@ -1,7 +1,7 @@
 Release 14.7 - reportgen P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Thu Dec 07 12:58:46 2023
+Fri Dec 08 12:36:27 2023
 
 File: CHIP_SASEBO_GIII_AES.dly
 
@@ -9,84 +9,116 @@ File: CHIP_SASEBO_GIII_AES.dly
 +-----------------+-----------+
 | Max Delay       | Netname   |
 +-----------------+-----------+
-   2.843            clk_OBUF
    2.508            clk_orig_OBUF
-   2.389            mk_clkrst_CLKFBOUT
+   2.422            led_1_OBUF
+   2.389            mk_clkrst_clk1
    2.389            mk_clkrst_clk0
-   2.297            led_1_OBUF
-   2.078            led_2_OBUF
+   2.389            mk_clkrst_CLKFBOUT
+   2.010            led_5_OBUF
+   1.985            led_2_OBUF
    1.984            mk_clkrst_CLKFBIN
-   1.334            cdc/counter[2]
+   1.951            led_4_OBUF
+   1.947            led_3_OBUF
+   1.923            clk_sample
+   1.819            clk_out_OBUF
+   1.339            led_7_OBUF
+   1.274            cdc/counter[4]
    1.230            mk_clkrst_refclk
-   1.176            cdc/counter[1]
-   0.698            cdc/counter[4]
-   0.627            cdc/counter[3]
-   0.451            cdc/counter[6]
-   0.358            cdc/counter[5]
-   0.335            cdc/[7].cd/clk_out
+   1.198            cdc/counter[2]
+   1.194            cdc/counter[1]
+   1.065            cdc/counter[5]
+   0.819            cdc/counter[3]
+   0.720            cdc/counter[6]
 ---------------------------------
 
 -------------------------------------------------------------------------------
                                Net Delays
 -------------------------------------------------------------------------------
 
-cdc/[7].cd/clk_out
-   cdc/[7].cd/clk_out.DMUX
-         0.335  cdc/[7].cd/clk_out.D5
-
 cdc/counter[1]
    cdc/counter[1].AQ
-         0.495  led_1_OBUF.AX
-         1.176  cdc/counter[2].CLK
-         0.369  cdc/counter[1].A4
+         0.449  led_1_OBUF.AX
+         1.194  cdc/counter[2].CLK
+         0.370  cdc/counter[1].A4
 
 cdc/counter[2]
    cdc/counter[2].AQ
-         1.334  led_2_OBUF.AX
-         0.868  cdc/counter[3].CLK
+         1.198  led_2_OBUF.AX
+         0.929  cdc/counter[3].CLK
          0.359  cdc/counter[2].A4
 
 cdc/counter[3]
    cdc/counter[3].AQ
-         0.487  clk_OBUF.DX
-         0.627  cdc/counter[4].CLK
-         0.369  cdc/counter[3].A4
+         0.819  led_3_OBUF.AX
+         0.281  cdc/counter[4].CLK
+         0.370  cdc/counter[3].A4
 
 cdc/counter[4]
-   cdc/counter[4].CQ
-         0.698  cdc/counter[5].CLK
-         0.457  cdc/counter[4].C4
+   cdc/counter[4].DMUX
+         0.702  led_4_OBUF.AX
+         1.274  cdc/counter[5].CLK
+         0.366  cdc/counter[4].D5
 
 cdc/counter[5]
    cdc/counter[5].AQ
-         0.268  cdc/counter[6].CLK
-         0.358  cdc/counter[5].A4
+         1.065  led_5_OBUF.AX
+         0.974  cdc/counter[6].CLK
+         0.359  cdc/counter[5].A4
 
 cdc/counter[6]
-   cdc/counter[6].DMUX
-         0.451  cdc/[7].cd/clk_out.CLK
-         0.354  cdc/counter[6].D5
+   cdc/counter[6].AQ
+         0.720  clk_out_OBUF.DX
+         0.280  cdc/counter[7].CLK
+         0.369  cdc/counter[6].A4
 
-clk_OBUF
-   clk_OBUF.DMUX
-         2.715  clk.O
-         2.843  led[3].O
+cdc/counter[7]
+   cdc/counter[7].DMUX
+         0.472  led_7_OBUF.AX
+         0.355  cdc/counter[7].D5
 
 clk_orig_OBUF
    mk_clkrst_u12.O
          2.508  clk_orig.O
-         1.517  cdc/counter[1].CLK
-         1.725  led_2_OBUF.CLK
-         1.709  clk_OBUF.CLK
-         1.522  led_1_OBUF.CLK
+         1.516  cdc/counter[1].CLK
+
+clk_out_OBUF
+   clk_out_OBUF.DMUX
+         1.819  clk_out.O
+         1.373  led[6].O
+
+clk_sample
+   mk_clkrst_u13.O
+         1.531  led_7_OBUF.CLK
+         1.921  led_3_OBUF.CLK
+         1.923  led_4_OBUF.CLK
+         1.727  led_2_OBUF.CLK
+         1.528  clk_out_OBUF.CLK
+         1.525  led_5_OBUF.CLK
+         1.516  led_1_OBUF.CLK
 
 led_1_OBUF
    led_1_OBUF.AQ
-         2.297  led[1].O
+         2.422  led[1].O
 
 led_2_OBUF
    led_2_OBUF.AQ
-         2.078  led[2].O
+         1.985  led[2].O
+
+led_3_OBUF
+   led_3_OBUF.AQ
+         1.947  led[3].O
+
+led_4_OBUF
+   led_4_OBUF.AQ
+         1.951  led[4].O
+
+led_5_OBUF
+   led_5_OBUF.AQ
+         2.010  led[5].O
+
+led_7_OBUF
+   led_7_OBUF.AQ
+         1.339  led[7].O
 
 mk_clkrst_CLKFBIN
    mk_clkrst_u15.O
@@ -99,6 +131,10 @@ mk_clkrst_CLKFBOUT
 mk_clkrst_clk0
    mk_clkrst_MMCME2_BASE_inst.CLKOUT0
          2.389  mk_clkrst_u12.I0
+
+mk_clkrst_clk1
+   mk_clkrst_MMCME2_BASE_inst.CLKOUT1
+         2.389  mk_clkrst_u13.I0
 
 mk_clkrst_refclk
    lbus_clkn.I
